@@ -39,12 +39,12 @@
                 </StackPanel>
             </TabItem>
             <TabItem Header="Users" Width="100">
-                <StackPanel Orientation="Horizontal">
+                <Grid>
                     <ListBox Name="List" Margin="5" Width="200" HorizontalAlignment="Left" BorderBrush="CornflowerBlue" BorderThickness="3"/>
 
                     <Button x:Name="Remove" HorizontalAlignment="Right" VerticalAlignment="Center" Background="Red" Width="100" Height="50" Content="Remove" Foreground="White" Click="Remove_Click"/>
-                    <Button x:Name="Save" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Gray" Width="100" Height="50" Content="Save" Foreground="White" Click="Save_Click"/>
-                </StackPanel>
+                    <Button x:Name="Save" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Gray" Width="100" Height="50" Content="Save" Foreground="White" Click="Save_Click"/>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>
