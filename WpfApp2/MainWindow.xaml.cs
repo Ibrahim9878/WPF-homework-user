@@ -18,14 +18,14 @@ public partial class MainWindow : Window
 
     private void Submit_Click(object sender, RoutedEventArgs e)
     {
-        
+
         string g = "";
         foreach (var item in GStack.Children)
         {
             var gender = item as RadioButton;
-            if(gender != null) 
+            if (gender != null)
             {
-                if(gender.IsChecked == true)
+                if (gender.IsChecked == true)
                     g = gender.Content.ToString();
             }
         }
@@ -61,10 +61,38 @@ public partial class MainWindow : Window
         var filename = p.Name;
         var options = new JsonSerializerOptions()
         { WriteIndented = true };
-        string json = JsonSerializer.Serialize(List.Items,options);
+        string json = JsonSerializer.Serialize(List.Items, options);
 
-        File.WriteAllText(filename,json);
+        File.WriteAllText(filename, json);
         people.Clear();
         List.Items.Refresh();
+    }
+
+    private void Load_Click(object sender, RoutedEventArgs e)
+    {
+        if (!File.Exists(LoadBox.Text))
+        {
+            MessageBox.Show("This File Doesnt exists");
+            LoadBox.Text = "";
+            return;
+        }
+        label.Visibility = Visibility.Hidden;
+        string json = File.ReadAllText(LoadBox.Text);
+        var op = new JsonSerializerOptions() { WriteIndented = true };
+        List<Person> p = JsonSerializer.Deserialize<List<Person>>(json, op);
+        people = p;
+        List.ItemsSource = null;
+        List.ItemsSource = p;
+        LoadBox.Text = "";
+    }
+
+    private void LoadBox_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        label.Visibility = Visibility.Hidden;
+    }
+
+    private void label_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        label.Visibility = Visibility.Visible;
     }
 }

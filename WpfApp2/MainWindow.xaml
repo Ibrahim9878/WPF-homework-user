@@ -43,7 +43,14 @@
                     <ListBox Name="List" Margin="5" Width="200" HorizontalAlignment="Left" BorderBrush="CornflowerBlue" BorderThickness="3"/>
 
                     <Button x:Name="Remove" HorizontalAlignment="Right" VerticalAlignment="Center" Background="Red" Width="100" Height="50" Content="Remove" Foreground="White" Click="Remove_Click"/>
-                    <Button x:Name="Save" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Gray" Width="100" Height="50" Content="Save" Foreground="White" Click="Save_Click"/>
+                    <Button x:Name="Save" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Magenta" Width="100" Height="50" Content="Save" Foreground="White" Click="Save_Click"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                        <Grid>
+                            <TextBox x:Name="LoadBox" Width="120" Height="20" Background="LightGray" MouseEnter="LoadBox_MouseEnter"/>
+                            <Label Name="label" Content="File Name: " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Gray" MouseEnter="LoadBox_MouseEnter" MouseLeave="label_MouseLeave"/>
+                        </Grid>
+                        <Button x:Name="Load" Background="Magenta" Width="100" Height="50" Content="Load" Foreground="White" Click="Load_Click" MouseLeave="label_MouseLeave"/>
+                    </StackPanel>
                 </Grid>
             </TabItem>
         </TabControl>
